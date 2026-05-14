@@ -1,227 +1,432 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Code, Brain, Cloud, Network, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, Sparkles, Zap, Shield, BarChart3, Code2, Brain, Cpu, Globe, ChevronRight, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-const fadeIn = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } }
 };
 
-const staggerContainer = {
+const stagger = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.15 } }
+  visible: { opacity: 1, transition: { staggerChildren: 0.12 } }
+};
+
+const scaleIn = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
 };
 
 export default function Home() {
   const services = [
-    { 
-      title: 'Enterprise Web Apps', 
-      desc: 'Scalable React & Node.js applications built for high performance and reliability.',
-      image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=600'
+    {
+      icon: <Code2 size={24} />,
+      title: 'Web Development',
+      desc: 'Scalable React & Node.js applications built for performance.',
+      color: 'from-violet-500 to-purple-600',
     },
-    { 
-      title: 'Cloud & Edge Infrastructure', 
-      desc: 'Distributed low-latency solutions deployed right at the network edge.',
-      image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=600'
+    {
+      icon: <Brain size={24} />,
+      title: 'AI & Machine Learning',
+      desc: 'Intelligent systems and LLM integrations for your business.',
+      color: 'from-cyan-400 to-blue-500',
     },
-    { 
-      title: 'AI & Machine Learning', 
-      desc: 'Intelligent systems, predictive models, and LLM integrations that optimize your business.',
-      image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600'
+    {
+      icon: <Cpu size={24} />,
+      title: 'Cloud Infrastructure',
+      desc: 'Distributed, low-latency solutions at the network edge.',
+      color: 'from-pink-500 to-rose-500',
     },
-    { 
-      title: 'End-to-End SaaS', 
-      desc: 'Complete architecture design, development, and deployment for subscription products.',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=600'
-    }
+    {
+      icon: <Globe size={24} />,
+      title: 'End-to-End SaaS',
+      desc: 'Complete architecture for subscription-based products.',
+      color: 'from-emerald-400 to-teal-500',
+    },
   ];
 
-  return (
-    <div className="overflow-hidden bg-background">
-      
-      {/* Hero Section */}
-      <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent z-0 pointer-events-none" />
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
-            
-            {/* Left Content */}
-            <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="text-center lg:text-left">
-              <motion.div variants={fadeIn} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-bold tracking-wide uppercase mb-6 border border-primary/20">
-                Next-Gen Software Agency
-              </motion.div>
-              
-              <motion.h1 variants={fadeIn} className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight mb-6">
-                Think Neural.<br/>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyan-500">Solve Logic.</span>
-              </motion.h1>
-              
-              <motion.p variants={fadeIn} className="text-xl text-foreground/70 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                We engineer intelligent, beautifully designed digital solutions. From complex SaaS architectures to AI integrations, we build the tech that runs your business.
-              </motion.p>
-              
-              <motion.div variants={fadeIn} className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-                <Link to="/contact" className="w-full sm:w-auto px-8 py-4 bg-primary text-primary-foreground rounded-xl font-bold hover:bg-primary/90 transition-colors flex items-center justify-center gap-2 shadow-lg shadow-primary/25">
-                  Initialize Project <ArrowRight size={20} />
-                </Link>
-                <Link to="/portfolio" className="w-full sm:w-auto px-8 py-4 bg-card border border-border text-foreground rounded-xl font-bold hover:bg-foreground/5 transition-colors flex items-center justify-center">
-                  View Our Work
-                </Link>
-              </motion.div>
-              
-              <motion.div variants={fadeIn} className="mt-10 flex items-center justify-center lg:justify-start gap-6 text-sm font-medium text-foreground/60">
-                 <div className="flex items-center gap-2"><CheckCircle2 className="text-primary" size={18} /> Top Rated Agency</div>
-                 <div className="flex items-center gap-2"><CheckCircle2 className="text-primary" size={18} /> 50+ Deployments</div>
-              </motion.div>
-            </motion.div>
+  const stats = [
+    { value: '50+', label: 'Projects Delivered' },
+    { value: '99.9%', label: 'Uptime SLA' },
+    { value: '3x', label: 'Faster Deployments' },
+    { value: '24/7', label: 'Support Available' },
+  ];
 
-            {/* Right Image */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9, rotate: -2 }} 
-              animate={{ opacity: 1, scale: 1, rotate: 0 }} 
-              transition={{ duration: 1, delay: 0.2 }}
-              className="relative lg:ml-auto"
-            >
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary to-cyan-400 rounded-3xl blur-2xl opacity-20 animate-pulse-glow" />
-              <div className="relative rounded-3xl overflow-hidden border border-border shadow-2xl glass aspect-square lg:aspect-[4/5] max-w-md mx-auto">
-                <img 
-                  src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=800" 
-                  alt="Futuristic AI Concept" 
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                <div className="absolute bottom-0 left-0 p-8">
-                  <div className="px-3 py-1 bg-primary text-primary-foreground text-xs font-bold uppercase rounded-md mb-3 inline-block">Featured Architecture</div>
-                  <h3 className="text-white text-2xl font-bold">Neural Data Processing</h3>
-                </div>
+  const techStack = ['React', 'Next.js', 'Node.js', 'Python', 'Flutter', 'Supabase', 'AWS', 'GCP', 'Docker', 'Kubernetes', 'TensorFlow', 'PostgreSQL'];
+
+  return (
+    <div className="overflow-hidden">
+
+      {/* ===== HERO SECTION ===== */}
+      <section className="relative min-h-screen flex items-center justify-center pt-16">
+        {/* Background */}
+        <div className="absolute inset-0 bg-grid z-0" />
+        <div className="orb orb-primary w-[500px] h-[500px] top-[-10%] right-[-10%]" />
+        <div className="orb orb-secondary w-[400px] h-[400px] bottom-[10%] left-[-5%]" />
+        <div className="orb orb-accent w-[300px] h-[300px] top-[40%] right-[20%]" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={stagger}
+            className="text-center max-w-4xl mx-auto"
+          >
+            {/* Badge */}
+            <motion.div variants={fadeUp} className="flex justify-center mb-8">
+              <div className="tag-pill">
+                <Sparkles size={14} />
+                <span>AI-First Software Agency</span>
               </div>
             </motion.div>
 
+            {/* Heading */}
+            <motion.h1
+              variants={fadeUp}
+              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[0.95] mb-8"
+            >
+              Think{' '}
+              <span className="gradient-text">Neural</span>
+              <br />
+              Solve{' '}
+              <span className="gradient-text-alt">Logic</span>
+              <span className="text-primary">.</span>
+            </motion.h1>
+
+            {/* Subtext */}
+            <motion.p
+              variants={fadeUp}
+              className="text-lg md:text-xl text-foreground/60 max-w-2xl mx-auto mb-10 leading-relaxed"
+            >
+              We engineer intelligent, beautifully designed digital solutions — from complex
+              SaaS architectures to AI integrations that power the future.
+            </motion.p>
+
+            {/* CTAs */}
+            <motion.div variants={fadeUp} className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link
+                to="/contact"
+                className="group px-8 py-4 bg-primary text-primary-foreground rounded-2xl font-semibold text-base hover:opacity-90 transition-all duration-300 flex items-center gap-2 shadow-xl shadow-primary/25 hover:shadow-primary/40"
+              >
+                Start Your Project
+                <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+              <Link
+                to="/portfolio"
+                className="group px-8 py-4 glass rounded-2xl font-semibold text-base hover:bg-foreground/5 transition-all duration-300 flex items-center gap-2"
+              >
+                Explore Our Work
+                <ChevronRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+            </motion.div>
+
+            {/* Stats bar */}
+            <motion.div
+              variants={fadeUp}
+              className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-4 max-w-3xl mx-auto"
+            >
+              {stats.map(({ value, label }) => (
+                <div key={label} className="text-center">
+                  <div className="text-2xl md:text-3xl font-bold gradient-text mb-1">{value}</div>
+                  <div className="text-xs text-foreground/50 font-medium uppercase tracking-wider">{label}</div>
+                </div>
+              ))}
+            </motion.div>
+          </motion.div>
+        </div>
+
+        {/* Scroll indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5 }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        >
+          <div className="w-5 h-8 rounded-full border-2 border-foreground/20 flex items-start justify-center p-1">
+            <motion.div
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+              className="w-1 h-2 rounded-full bg-primary"
+            />
           </div>
+        </motion.div>
+      </section>
+
+      {/* ===== TECH MARQUEE ===== */}
+      <section className="py-8 border-y border-border/50 bg-card/30 overflow-hidden">
+        <div className="flex animate-marquee whitespace-nowrap">
+          {[...techStack, ...techStack].map((tech, i) => (
+            <span key={i} className="mx-8 text-sm font-mono text-foreground/30 font-medium uppercase tracking-widest">
+              {tech}
+            </span>
+          ))}
         </div>
       </section>
 
-      {/* Expertise Section - Alternating Layout */}
-      <section className="py-32 bg-card border-t border-border overflow-hidden">
+      {/* ===== SERVICES BENTO GRID ===== */}
+      <section className="py-24 md:py-32 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-24">
-            <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} className="text-4xl md:text-5xl font-bold mb-6">
-              Our Core Expertise
+          {/* Section Header */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={stagger}
+            className="text-center mb-16"
+          >
+            <motion.div variants={fadeUp} className="flex justify-center mb-4">
+              <span className="tag-pill">
+                <Zap size={14} />
+                What We Do
+              </span>
+            </motion.div>
+            <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl font-bold mb-6">
+              Solutions That <span className="gradient-text">Scale</span>
             </motion.h2>
-            <p className="text-xl text-foreground/70 max-w-2xl mx-auto">We deliver end-to-end technology solutions using the modern stack, engineered for scale.</p>
-          </div>
-          
-          <div className="space-y-32">
-            {services.map((service, idx) => {
-              const isEven = idx % 2 !== 0;
-              return (
-                <motion.div 
-                  key={idx} 
-                  initial={{ opacity: 0, y: 50 }} 
-                  whileInView={{ opacity: 1, y: 0 }} 
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.8 }}
-                  className={`flex flex-col gap-12 lg:gap-24 items-center ${isEven ? 'lg:flex-row-reverse' : 'lg:flex-row'}`}
+            <motion.p variants={fadeUp} className="text-lg text-foreground/60 max-w-2xl mx-auto">
+              End-to-end technology solutions engineered with modern stacks, built for the demands of tomorrow.
+            </motion.p>
+          </motion.div>
+
+          {/* Bento Grid */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={stagger}
+            className="grid grid-cols-1 md:grid-cols-2 gap-5"
+          >
+            {services.map((service, idx) => (
+              <motion.div
+                key={idx}
+                variants={scaleIn}
+                className="bento-card glass p-8 md:p-10 group cursor-pointer"
+              >
+                {/* Icon gradient bg */}
+                <div className={`inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-br ${service.color} text-white mb-6 shadow-lg transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3`}>
+                  {service.icon}
+                </div>
+                <h3 className="text-xl md:text-2xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">
+                  {service.title}
+                </h3>
+                <p className="text-foreground/60 leading-relaxed mb-6">{service.desc}</p>
+                <Link
+                  to="/services"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-primary opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300"
                 >
-                  <div className="w-full lg:w-1/2 relative group">
-                    <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full opacity-0 group-hover:opacity-50 transition-opacity duration-700" />
-                    <div className="relative rounded-[2rem] overflow-hidden shadow-2xl border border-border/50 aspect-[4/3]">
-                      <img 
-                        src={service.image} 
-                        alt={service.title} 
-                        className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-1000"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60" />
-                    </div>
-                  </div>
-                  
-                  <div className="w-full lg:w-1/2">
-                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 text-primary mb-6">
-                      <span className="font-bold text-xl">0{idx + 1}</span>
-                    </div>
-                    <h3 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight">{service.title}</h3>
-                    <p className="text-xl text-foreground/70 leading-relaxed mb-8">{service.desc}</p>
-                    
-                    <ul className="space-y-4 mb-10">
-                      <li className="flex items-center gap-3 text-foreground/80 font-medium">
-                        <CheckCircle2 className="text-primary shrink-0" size={20} /> High Performance Architecture
-                      </li>
-                      <li className="flex items-center gap-3 text-foreground/80 font-medium">
-                        <CheckCircle2 className="text-primary shrink-0" size={20} /> Scalable & Secure
-                      </li>
-                      <li className="flex items-center gap-3 text-foreground/80 font-medium">
-                        <CheckCircle2 className="text-primary shrink-0" size={20} /> Seamless Integration
-                      </li>
-                    </ul>
-
-                    <Link to="/contact" className="inline-flex items-center gap-2 px-6 py-3 bg-foreground/5 hover:bg-foreground/10 border border-border rounded-xl font-bold transition-colors">
-                      Learn More <ArrowRight size={18} />
-                    </Link>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
+                  Learn more <ArrowRight size={14} />
+                </Link>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
-      {/* Client Reviews */}
-      <section className="py-24 relative z-10 border-t border-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} className="text-4xl font-bold mb-4">
-              Client Feedback
-            </motion.h2>
-            <p className="text-xl text-foreground/70 max-w-2xl mx-auto">Don't just take our word for it. Here is what our partners say.</p>
-          </div>
+      {/* ===== WHY NEURALLOGIC ===== */}
+      <section className="py-24 md:py-32 bg-card/50 border-y border-border/50 relative">
+        <div className="absolute inset-0 bg-dots z-0" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={stagger}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+          >
+            {/* Left */}
+            <div>
+              <motion.div variants={fadeUp} className="mb-4">
+                <span className="tag-pill">
+                  <Shield size={14} />
+                  Why Choose Us
+                </span>
+              </motion.div>
+              <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl font-bold mb-6">
+                Engineering <span className="gradient-text">excellence</span>, delivered.
+              </motion.h2>
+              <motion.p variants={fadeUp} className="text-lg text-foreground/60 mb-10 leading-relaxed">
+                We don't just write code — we architect systems that scale, perform, and delight users. Every project is a partnership built on transparency and technical precision.
+              </motion.p>
 
-          <motion.div 
-            initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={staggerContainer}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+              <motion.div variants={stagger} className="space-y-5">
+                {[
+                  { icon: <BarChart3 size={20} />, title: 'Performance Obsessed', desc: 'Sub-second load times with optimized rendering pipelines.' },
+                  { icon: <Shield size={20} />, title: 'Security First', desc: 'Enterprise-grade security protocols baked into every layer.' },
+                  { icon: <Zap size={20} />, title: 'Rapid Iteration', desc: 'CI/CD pipelines and agile workflows for continuous delivery.' },
+                ].map(({ icon, title, desc }, i) => (
+                  <motion.div
+                    key={i}
+                    variants={fadeUp}
+                    className="flex gap-4 p-4 rounded-2xl hover:bg-foreground/3 transition-colors duration-300"
+                  >
+                    <div className="shrink-0 w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+                      {icon}
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-1">{title}</h4>
+                      <p className="text-sm text-foreground/55">{desc}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+
+            {/* Right — Code Block Visual */}
+            <motion.div variants={scaleIn} className="relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/10 rounded-3xl blur-3xl" />
+              <div className="relative glass rounded-3xl p-6 md:p-8 overflow-hidden">
+                {/* Terminal header */}
+                <div className="flex items-center gap-2 mb-6">
+                  <div className="w-3 h-3 rounded-full bg-red-400" />
+                  <div className="w-3 h-3 rounded-full bg-yellow-400" />
+                  <div className="w-3 h-3 rounded-full bg-green-400" />
+                  <span className="ml-3 text-xs font-mono text-foreground/40">neurallogic.config.ts</span>
+                </div>
+                {/* Code content */}
+                <pre className="font-mono text-sm leading-7 overflow-x-auto">
+                  <code>
+                    <span className="text-purple-400">const</span>{' '}
+                    <span className="text-cyan-400">config</span>{' '}
+                    <span className="text-foreground/50">=</span>{' '}
+                    <span className="text-yellow-400">{'{'}</span>{'\n'}
+                    {'  '}<span className="text-foreground/60">stack</span>
+                    <span className="text-foreground/40">:</span>{' '}
+                    <span className="text-green-400">"React + Node.js"</span>
+                    <span className="text-foreground/40">,</span>{'\n'}
+                    {'  '}<span className="text-foreground/60">ai</span>
+                    <span className="text-foreground/40">:</span>{' '}
+                    <span className="text-green-400">"LLM Integrations"</span>
+                    <span className="text-foreground/40">,</span>{'\n'}
+                    {'  '}<span className="text-foreground/60">cloud</span>
+                    <span className="text-foreground/40">:</span>{' '}
+                    <span className="text-green-400">"AWS + Edge"</span>
+                    <span className="text-foreground/40">,</span>{'\n'}
+                    {'  '}<span className="text-foreground/60">uptime</span>
+                    <span className="text-foreground/40">:</span>{' '}
+                    <span className="text-cyan-400">99.99</span>
+                    <span className="text-foreground/40">,</span>{'\n'}
+                    {'  '}<span className="text-foreground/60">scale</span>
+                    <span className="text-foreground/40">:</span>{' '}
+                    <span className="text-purple-400">Infinity</span>
+                    <span className="text-foreground/40">,</span>{'\n'}
+                    <span className="text-yellow-400">{'}'}</span>
+                    <span className="text-foreground/40">;</span>
+                  </code>
+                </pre>
+                {/* Decorative line */}
+                <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ===== TESTIMONIALS ===== */}
+      <section className="py-24 md:py-32 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={stagger}
+            className="text-center mb-16"
+          >
+            <motion.div variants={fadeUp} className="flex justify-center mb-4">
+              <span className="tag-pill">
+                <Star size={14} />
+                Testimonials
+              </span>
+            </motion.div>
+            <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl font-bold mb-4">
+              Loved by <span className="gradient-text">teams</span>
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={stagger}
+            className="grid grid-cols-1 md:grid-cols-3 gap-6"
           >
             {[
               {
                 text: "Neurallogic completely transformed our edge infrastructure. Their AI integrations reduced our latency by 80% and scaled flawlessly.",
                 name: "Sarah Jenkins",
                 role: "CTO, QuantumTech",
-                rating: 5
               },
               {
                 text: "The most impressive engineering team we've worked with. They delivered a complex SaaS platform months ahead of schedule.",
                 name: "David Chen",
                 role: "Founder, NovaData",
-                rating: 5
               },
               {
                 text: "Their approach to predictive analytics gave us insights we never thought possible. A truly reliable partner.",
                 name: "Elena Rodriguez",
                 role: "VP Engineering, SynthCorp",
-                rating: 5
-              }
+              },
             ].map((review, idx) => (
-              <motion.div key={idx} variants={fadeIn} className="bg-card p-8 rounded-2xl border border-border shadow-md hover:shadow-lg transition-all duration-300 relative group">
-                <div className="absolute -top-4 -left-4 text-6xl text-primary/10 font-serif">"</div>
+              <motion.div
+                key={idx}
+                variants={fadeUp}
+                className="bento-card glass p-8 flex flex-col"
+              >
+                {/* Stars */}
                 <div className="flex gap-1 mb-6">
-                  {[...Array(review.rating)].map((_, i) => (
-                    <svg key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={16} className="text-yellow-400 fill-yellow-400" />
                   ))}
                 </div>
-                <p className="text-foreground/80 leading-relaxed mb-8 relative z-10 italic">"{review.text}"</p>
-                <div className="mt-auto flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-lg font-bold text-primary">
+                <p className="text-foreground/70 leading-relaxed mb-8 flex-1 italic">
+                  "{review.text}"
+                </p>
+                <div className="flex items-center gap-3 pt-6 border-t border-border/50">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-accent text-white flex items-center justify-center text-sm font-bold">
                     {review.name.charAt(0)}
                   </div>
                   <div>
-                    <h4 className="font-bold text-foreground">{review.name}</h4>
-                    <p className="text-sm text-foreground/60">{review.role}</p>
+                    <h4 className="text-sm font-semibold">{review.name}</h4>
+                    <p className="text-xs text-foreground/50">{review.role}</p>
                   </div>
                 </div>
               </motion.div>
             ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ===== CTA SECTION ===== */}
+      <section className="py-24 md:py-32 relative">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={stagger}
+            className="relative glass rounded-3xl p-12 md:p-16 text-center overflow-hidden"
+          >
+            {/* Background orbs */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-[100px]" />
+            <div className="absolute bottom-0 left-0 w-48 h-48 bg-accent/15 rounded-full blur-[80px]" />
+
+            <motion.h2 variants={fadeUp} className="text-3xl md:text-5xl font-bold mb-6 relative z-10">
+              Ready to build something{' '}
+              <span className="gradient-text">extraordinary</span>?
+            </motion.h2>
+            <motion.p variants={fadeUp} className="text-lg text-foreground/60 mb-10 max-w-xl mx-auto relative z-10">
+              Let's turn your vision into a scalable, beautiful product.
+              Start the conversation today.
+            </motion.p>
+            <motion.div variants={fadeUp} className="relative z-10">
+              <Link
+                to="/contact"
+                className="group inline-flex items-center gap-2 px-10 py-5 bg-primary text-primary-foreground rounded-2xl font-semibold text-lg hover:opacity-90 transition-all duration-300 shadow-xl shadow-primary/25 hover:shadow-primary/40"
+              >
+                Get in Touch
+                <ArrowRight size={20} className="transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
       </section>
