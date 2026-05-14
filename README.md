@@ -92,13 +92,9 @@ To enable the dynamic features (Blogs, Admin), ensure you have a Supabase projec
 - `careers`: (id, title, department, location, type, description)
 - `contact_submissions`: (id, name, email, message, created_at)
 
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
 ## 📄 License
 
-This project is licensed under the MIT License.
+© 2026 Neurallogic. All Rights Reserved. This project and its source code are proprietary and confidential. Unauthorized copying, modification, or distribution is strictly prohibited.
 
 ---
 
