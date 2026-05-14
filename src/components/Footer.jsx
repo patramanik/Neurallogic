@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
             <div className="mb-6">
-              <img src="/logo_Neurallogic-removebg.png" alt="Neurallogic" className="h-16 md:h-20 w-auto object-contain -ml-2" />
+              <img src={`${import.meta.env.BASE_URL}logo_Neurallogic-removebg.png`} alt="Neurallogic" className="h-16 md:h-20 w-auto object-contain -ml-2" />
             </div>
             <p className="text-foreground/70 text-sm max-w-sm mb-6">
               THINK NEURAL . SOLVE LOGIC. We build scalable architecture and clean, maintainable code for Startups, Enterprises, and SMEs.

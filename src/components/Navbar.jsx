@@ -14,7 +14,7 @@ export default function Navbar() {
         <div className="flex justify-between h-16 items-center">
           <div className="flex-shrink-0 flex items-center py-2">
             <NavLink to="/" className="flex items-center gap-2">
-              <img src="/logo_Neurallogic-removebg.png" alt="Neurallogic" className="h-16 md:h-20 w-auto object-contain" />
+              <img src={`${import.meta.env.BASE_URL}logo_Neurallogic-removebg.png`} alt="Neurallogic" className="h-16 md:h-20 w-auto object-contain" />
             </NavLink>
           </div>
           

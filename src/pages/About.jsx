@@ -27,7 +27,7 @@ export default function About() {
             </p>
           </motion.div>
           <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="relative h-[400px] rounded-2xl overflow-hidden glass flex items-center justify-center p-8">
-             <img src="/logo_Neurallogic.png" alt="Neurallogic Logo" className="w-full h-full object-contain drop-shadow-2xl" />
+             <img src={`${import.meta.env.BASE_URL}logo_Neurallogic.png`} alt="Neurallogic Logo" className="w-full h-full object-contain drop-shadow-2xl" />
           </motion.div>
         </div>
 
